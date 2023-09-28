@@ -79,6 +79,15 @@ class SnakeGame(QGraphicsView):
         self.timer.start(300)
         self.food = self.spawn_food()
 
+        
+        # add food
+    def spawn_food(self):
+        while True:
+            x = random.randint(0, GRID_WIDTH - 1)
+            y = random.randint(0, GRID_HEIGHT - 1)
+            if (x, y) not in self.snake:
+                return x, y
+
 def main():
     app = QApplication(sys.argv)
     game = SnakeGame()
@@ -86,13 +95,7 @@ def main():
     sys.exit(app.exec())
 
 
-# add food
-def spawn_food(self):
-    while True:
-        x = random.randint(0, GRID_WIDTH - 1)
-        y = random.randint(0, GRID_HEIGHT - 1)
-        if (x, y) not in self.snake:
-            return x, y
+
 
 if __name__ == "__main__":
     main()
